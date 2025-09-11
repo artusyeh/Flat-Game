@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Left
+  - Right
+  - DeadFish
+  - Top
+  - Bottom
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ocean
+    uniqueID: 1150439909
+    locked: 0
+  - name: Rocks
+    uniqueID: 644700227
+    locked: 0
+  - name: S
+    uniqueID: 2084313635
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 1626944815
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 1668185087
+    locked: 0
+  m_RenderingLayers:
+  - Default
