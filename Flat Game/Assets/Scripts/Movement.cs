@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 2f; // Adjustable speed in units per second
+    public float moveSpeed = 2f; // Adjustable speed
     private SpriteRenderer spriteRenderer;
 
     bool goLeft = true;
@@ -12,9 +12,18 @@ public class Movement : MonoBehaviour
 
     private AudioSource swimSource;
     private AudioSource sfxSource;
+    private AudioSource villagerSource;
+    private AudioSource pipeSource;
 
     public AudioClip dingCD;
     public AudioClip swimCD;
+    public AudioClip villagerCD;
+    public AudioClip pipeCD;
+
+    public GameObject omarDialog; // Omar dialog
+    public GameObject tifaDialog; // Tifa dialog
+
+    public GameObject shorkDialog; // Shork dialog
 
 
     void Start()
@@ -25,8 +34,27 @@ public class Movement : MonoBehaviour
         swimSource.loop = true;
         swimSource.clip = swimCD;
 
+        villagerSource = gameObject.AddComponent<AudioSource>();
+        villagerSource.loop = true;
+        villagerSource.clip = villagerCD;
+
         sfxSource = gameObject.AddComponent<AudioSource>();
         sfxSource.loop = false;
+        sfxSource.clip = dingCD;
+
+        pipeSource = gameObject.AddComponent<AudioSource>();
+        pipeSource.loop = false;
+        pipeSource.clip = pipeCD;
+
+        // Hide dialog at the start
+        if (omarDialog != null)
+            omarDialog.SetActive(false);
+
+        if (tifaDialog != null)
+            tifaDialog.SetActive(false); 
+
+        if (shorkDialog != null)
+            shorkDialog.SetActive(false); 
     }
 
     void Update()
@@ -83,11 +111,43 @@ public class Movement : MonoBehaviour
         if (collision.CompareTag("Bottom"))
             goDown = false;
 
-        if (collision.CompareTag("Glimbo")) 
+        if (collision.CompareTag("Glimbo"))
         {
-            if (!sfxSource.isPlaying) 
+            if (!sfxSource.isPlaying)
             {
                 sfxSource.PlayOneShot(dingCD);
+            }
+        }
+
+        if (collision.CompareTag("Omar"))
+        {
+            if (omarDialog != null)
+                omarDialog.SetActive(true); // Make it appear
+
+            if (!villagerSource.isPlaying)
+            {
+                villagerSource.PlayOneShot(villagerCD);
+            }
+        }
+
+        if (collision.CompareTag("Tifa"))
+        {
+            if (tifaDialog != null)
+                tifaDialog.SetActive(true);
+        }
+
+        if (collision.CompareTag("Shork"))
+        {
+            if (shorkDialog != null)
+            {
+                shorkDialog.SetActive(true);
+                shorkDialog.transform.SetParent(collision.transform); // attach to Shork
+                shorkDialog.transform.localPosition = new Vector3(5f, 3f, -1.5f);
+            }
+            
+            if (!pipeSource.isPlaying)
+            {
+                pipeSource.PlayOneShot(pipeCD);
             }
         }
     }
