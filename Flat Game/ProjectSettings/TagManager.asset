@@ -6,9 +6,10 @@ TagManager:
   tags:
   - Left
   - Right
-  - DeadFish
   - Top
   - Bottom
+  - Glimbo
+  - Leggo
   layers:
   - Default
   - TransparentFX
