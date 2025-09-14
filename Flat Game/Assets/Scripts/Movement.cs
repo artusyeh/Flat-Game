@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 2f; // Adjustable speed
+    public float moveSpeed = 0.5f; // Adjustable speed
     private SpriteRenderer spriteRenderer;
 
     bool goLeft = true;
